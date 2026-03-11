@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            background:#F6F0D7;
+        }
+        h1{
+            color: hwb(105 41% 5%);  
+            text-align: center;
+            font-size: 50px;
+            font-family:fantasy;
+            background-image: url("Menü Projesi/kısımlar/resimler/kafe.jpg");
+            background-size:cover;
+            background-position: center;
+            background-color:rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+        }
+        a{
+            color: #4b651b;
+        }
+        /* --- MOBİL UYUMLULUK AYARLARI --- */
+@media screen and (max-width: 600px) {
+  /* Sayfa genelini daralt ve hizala */
+  body {
+    padding: 10px;
+    font-size: 16px; /* Yazıları mobilde okunur yap */
+  }
+
+  /* Eğer yan yana elemanların varsa (flex/grid) onları alt alta al */
+  .container, .menu-items, .row { 
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Resimleri ekranın genişliğine göre ayarla, taşmasınlar */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Menü kartların veya butonların varsa onları tam genişlik yap */
+  .card, .button, .menu-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+}
+
+
+    </style>
+    <h1>Medonasly</h1>
+    
+    <a href="içerik.html" style="font-size: 40px;
+     ">Menu</a>
+    
+</body>
+</html>

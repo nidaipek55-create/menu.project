@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="SearchContainer">
+        <input type="text" id="menuSearch" onkeyup="filterMenu()" placeholder="Search for food or drink...">
+    </div>
+    <h1>Sandwiches</h1>
+    <hr/>
+    <ul id="appetizerList">
+        <li class="menu-item" onclick="openModal('Turkey Breast', '200 TL', 'resimler/turkeybreast.jpg')">Turkey Breast</li>
+        <li class="menu-item" onclick="openModal('Classic Tuna', '180 TL', 'resimler/tuna.jpg')">Classic Tuna</li>
+        <li class="menu-item" onclick="openModal('Oven Roasted Chicken', '230 TL', 'resimler/chicken.jpg')">Oven Roasted Chicken</li>
+    </ul>
+    <hr/>
+    <h1>Salads</h1>
+    <hr/>
+    <ul id="appetizerList">
+        <li class="menu-item" onclick="openModal('Caesar Salad', '220 TL', 'resimler/ceaser.jpeg')">Caesar Salad</li>
+        <li class="menu-item" onclick="openModal('Greek Salad', '190 TL', 'resimler/greek.jpeg')">Greek Salad</li>
+        <li class="menu-item" onclick="openModal('Chicken Salad', '250 TL', 'resimler/chicken.jpg')">Garden Salad</li>
+    </ul>
+    <hr/>
+    <div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Ürün Resmi">
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice"></p>
+    </div>
+    </div>
+
+<style>
+    body{
+        background:#F6F0D7;
+    }
+    h1{
+        color: hwb(105 61% 0%);  
+        text-align: center;
+        font-size: 50px;
+        font-family:fantasy;
+        background-image: url("Menü Projesi/kısımlar/kafe.jpg");
+        background-size:cover;
+        background-position: center;
+        background-color:rgba(0, 0, 0, 0.4);
+        border-radius: 15px;
+    }
+    li:hover {
+    background-color: rgba(52, 163, 169, 0.1);
+    border-radius: 5px;
+}
+
+    li{
+        font-size: 30px;
+        color: rgb(6, 55, 58);
+        cursor: pointer;
+    }
+     #SearchContainer{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    a{
+        color: #4b651b;
+    }
+    #SearchContainer{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    #menuSearch{
+        width: 80%;
+        padding: 15px;
+        font-size: 20px;
+        border-radius: 25px;
+        border: 2px solid  rgb(52, 163, 169);
+        outline: none;
+    }
+    hr {
+        border: 1px solid rgb(52, 163, 169);
+        border-radius: 15px;
+    }
+    .modal{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content{
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        width: 300px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .modal-content img{
+        width: 100%;
+        height:200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .modal-content h2 { color: rgb(43, 43, 114); }
+    .modal-content p { font-size: 24px; color: #34a3a9; font-weight: bold; }
+    .close{
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    /* --- MOBİL UYUMLULUK AYARLARI --- */
+@media screen and (max-width: 600px) {
+  /* Sayfa genelini daralt ve hizala */
+  body {
+    padding: 10px;
+    font-size: 16px; /* Yazıları mobilde okunur yap */
+  }
+
+  /* Eğer yan yana elemanların varsa (flex/grid) onları alt alta al */
+  .container, .menu-items, .row { 
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Resimleri ekranın genişliğine göre ayarla, taşmasınlar */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Menü kartların veya butonların varsa onları tam genişlik yap */
+  .card, .button, .menu-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+}
+
+</style>
+<script>
+  
+function filterMenu() {
+    let input = document.getElementById('menuSearch').value.toLowerCase();
+    let items = document.getElementsByClassName('menu-item');
+    let isSearching = input.trim() !== "";
+    let titlesAndLines = document.querySelectorAll('h1, hr');
+
+    for (let i = 0; i < items.length; i++) {
+        let text = items[i].innerText.toLowerCase();
+        items[i].style.display = text.includes(input) ? "" : "none";
+    }
+
+    for (let i = 0; i < titlesAndLines.length; i++) {
+        titlesAndLines[i].style.display = isSearching ? "none" : "";
+    }
+}
+    function openModal(ad, fiyat, resim) {
+        document.getElementById('productModal').style.display = "block";
+        document.getElementById('modalTitle').innerText = ad;
+        document.getElementById('modalPrice').innerText = fiyat;
+        document.getElementById('modalImg').src = resim;
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').style.display = "none";
+    }
+
+
+    window.onclick = function(event) {
+        let modal = document.getElementById('productModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

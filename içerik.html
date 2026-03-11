@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü</title>
+    <style>
+        body {
+            background: #F6F0D7;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: rgb(213, 229, 253);
+            font-size: 60px;
+            background-color: rgba(0, 0, 0, 0.4);
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            text-align: center;
+  
+        }
+        img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+        }
+        a {
+            color: rgb(63, 107, 109);
+            font-size: 40px;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+         a:hover{
+            background-color:rgba(52, 163, 169, 0.1);
+            border-radius: 5px;
+        }
+        
+        li {
+            font-size: 30px;
+            color: rgb(138, 172, 173);            
+            padding: 5px;
+        }
+        /* --- MOBİL UYUMLULUK AYARLARI --- */
+@media screen and (max-width: 600px) {
+  /* Sayfa genelini daralt ve hizala */
+  body {
+    padding: 10px;
+    font-size: 16px; /* Yazıları mobilde okunur yap */
+  }
+
+  /* Eğer yan yana elemanların varsa (flex/grid) onları alt alta al */
+  .container, .menu-items, .row { 
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Resimleri ekranın genişliğine göre ayarla, taşmasınlar */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Menü kartların veya butonların varsa onları tam genişlik yap */
+  .card, .button, .menu-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+}
+       
+
+    </style>
+</head>
+<body>
+
+<h1>Menu</h1>
+<dragabble id="menuList" style="padding: 0;">
+    <li class="menu-item">
+
+<ul id="menuList" style="padding: 0;">
+    <li class="menu-item">
+        <img src="Menü Projesi/kısımlar/resimler/tatli.jpg" alt="Tatlılar">
+        <a href="Menü Projesi/kısımlar/yiyecekler.html">Desserts</a>
+    </li>
+</ul>
+<ul id="menuList" style="padding: 0;">
+    <li class="menu-item">
+        <img src="Menü Projesi/kısımlar/resimler/içecek.jpg" alt="İçecekler">
+        <a href="Menü Projesi/kısımlar/içecekler.html">Drinks</a>
+    </li>
+</ul>
+<ul id="menuList" style="padding: 0;"></ul>
+<li class="menu-item">
+    <img src="Menü Projesi/kısımlar/resimler/atiştirmalik.jpg" alt="Atıştırmalıklar">
+    <a href="Menü Projesi/kısımlar/atiştirmalikler.html">Appetizers</a>
+
+</li>
+</ul>
+</body>
+</html>

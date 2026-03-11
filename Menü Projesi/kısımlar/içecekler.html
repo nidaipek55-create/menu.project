@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü Detaylı</title>
+</head>
+<body>
+
+<div id="searchContainer">
+    <input type="text" id="menuSearch" onkeyup="filterMenu()" placeholder="Search for food or drink...">
+</div>
+
+<h1>Coffee</h1>
+<hr/>
+<ul id="coffeeList">
+    <li class="menu-item" onclick="openModal('Espresso', '170 TL', 'resimler/espresso.jpeg')">Espresso </li>
+    <li class="menu-item" onclick="openModal('Americano', '190 TL', 'resimler/americano.jpeg')">Americano </li>
+    <li class="menu-item" onclick="openModal('Latte', '220 TL', 'resimler/latte.jpeg')">Latte </li>
+    <li class="menu-item" onclick="openModal('Cappuccino', '190 TL', 'resimler/Cappuccino.jpeg')">Cappuccino </li>
+    <li class="menu-item" onclick="openModal('Mocha', '190 TL', 'resimler/mocha.jpeg')">Mocha </li>
+    <li class="menu-item" onclick="openModal('Macchiato', '200 TL', 'resimler/macc.jpeg')">Macchiato </li>
+    <li class="menu-item" onclick="openModal('Caramel Macchiato', '230 TL', 'resimler/caramel.jpeg')">Caramel Macchiato </li>
+    <li class="menu-item" onclick="openModal('Flat White', '230 TL', 'resimler/flat.jpeg')">Flat White </li>
+    <li class="menu-item" onclick="openModal('Affogato', '250 TL', 'resimler/affo.jpeg')">Affogato </li>
+    <li class="menu-item" onclick="openModal('Irish Coffee', '220 TL', 'resimler/irish.jpeg')">Irish Coffee </li>
+    <li class="menu-item" onclick="openModal('Frappuccino', '250 TL', 'resimler/Frappuccino.jpeg')">Frappuccino </li>
+</ul>
+
+<hr/>
+<h1>Tea</h1>
+<hr/>
+<ul id="teaList">
+    <li class="menu-item" onclick="openModal('Tea', '40 TL', 'resimler/tea.jpeg')">Tea </li>
+    <li class="menu-item" onclick="openModal('Herbal Tea', '70 TL', 'resimler/herbal.jpeg')">Herbal Tea </li>
+    <li class="menu-item" onclick="openModal('Green Tea', '70 TL', 'resimler/green.jpeg')">Green Tea </li>
+    <li class="menu-item" onclick="openModal('Strawberry Tea', '100 TL', 'resimler/starwberry.jpeg')">Strawberry Tea </li>
+    <li class="menu-item" onclick="openModal('Matcha', '200 TL', 'resimler/matcha.jpeg')">Matcha </li>  
+    <li class="menu-item" onclick="openModal('Strawberry Matcha', '220 TL', 'resimler/straw.jpeg')">Strawberry Matcha </li> 
+</ul>
+<hr/>
+
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" src="" alt="Ürün Resmi">
+        <h2 id="modalTitle"></h2>
+        <p id="modalPrice"></p>
+    </div>
+</div>
+
+<style>
+    body {
+        background: #F6F0D7;
+        font-family: sans-serif;
+    }
+    h1 {
+        color: hwb(105 61% 0%);
+        background-size:cover;
+        background-position: center;
+        background-color:rgba(0, 0, 0, 0.4);
+        border-radius: 15px;
+        
+        text-align: center;
+        font-size: 50px;
+    }
+    #searchContainer {
+        text-align: center;
+        margin: 20px 0;
+    }
+    #menuSearch {
+        width: 70%;
+        padding: 15px;
+        font-size: 20px;
+        border-radius: 25px;
+        border: 2px solid rgb(52, 163, 169);
+    }
+    li {
+        font-size: 30px;
+        color: rgb(6, 55, 58);
+        cursor: pointer;
+        padding: 5px;
+        list-style-type: square;
+    }
+    li:hover {
+        background-color: rgba(52, 163, 169, 0.1);
+        border-radius: 5px;
+    }
+    hr {
+        border: 1px solid rgb(52, 163, 169);
+        border-radius: 15px;
+    }
+
+   
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 15px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .modal-content img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .modal-content h2 { color: rgb(43, 43, 114); }
+    .modal-content p { font-size: 24px; color: #34a3a9; font-weight: bold; }
+    .close {
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    /* --- MOBİL UYUMLULUK AYARLARI --- */
+@media screen and (max-width: 600px) {
+  /* Sayfa genelini daralt ve hizala */
+  body {
+    padding: 10px;
+    font-size: 16px; /* Yazıları mobilde okunur yap */
+  }
+
+  /* Eğer yan yana elemanların varsa (flex/grid) onları alt alta al */
+  .container, .menu-items, .row { 
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Resimleri ekranın genişliğine göre ayarla, taşmasınlar */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Menü kartların veya butonların varsa onları tam genişlik yap */
+  .card, .button, .menu-item {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+}
+</style>
+
+<script>
+   function filterMenu() {
+    let input = document.getElementById('menuSearch').value.toLowerCase();
+    let items = document.getElementsByClassName('menu-item');
+    let isSearching = input.trim() !== "";
+    let titlesAndLines = document.querySelectorAll('h1, hr');
+
+    for (let i = 0; i < items.length; i++) {
+        let text = items[i].innerText.toLowerCase();
+        items[i].style.display = text.includes(input) ? "" : "none";
+    }
+
+    for (let i = 0; i < titlesAndLines.length; i++) {
+        titlesAndLines[i].style.display = isSearching ? "none" : "";
+    }
+}
+
+    function openModal(ad, fiyat, resim) {
+        document.getElementById('productModal').style.display = "block";
+        document.getElementById('modalTitle').innerText = ad;
+        document.getElementById('modalPrice').innerText = fiyat;
+        document.getElementById('modalImg').src = resim;
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').style.display = "none";
+    }
+
+    // Ekranın boş bir yerine basınca kapansın
+    window.onclick = function(event) {
+        let modal = document.getElementById('productModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
